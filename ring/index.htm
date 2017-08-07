@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="js canvas no-touch opacity csstransforms svg cssanimations"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="static/jquery.js"></script>
+<script type="text/javascript" src="static/iceman3d.js"></script>
+<title>思创睿思</title>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="author" content="Bobby Chan">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp">
+
+        <link rel="stylesheet" type="text/css" href="static/animate.css">
+
+        <!-- <link rel="stylesheet" type="text/css" href="static/amazeui.css"> -->
+        <link rel="stylesheet" type="text/css" href="static/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="static/apps.css">
+        <link rel="stylesheet" type="text/css" href="static/wzh.css">
+                <!--[if lt IE 9]>
+            <script src="http://www.dayin.la/js/html5shiv.min.js"></script>
+            <script src="http://www.dayin.la/js/respond.min.js"></script>
+        <![endif]-->
+       <!--  <script type="text/javascript" src="static/amazeui.js"></script>
+        <script type="text/javascript">var isLogin = 1;</script> -->
+    <link rel="stylesheet" href="static/layer.css" id="layui_layer_skinlayercss" style=""></head>
+    <body>
+        
+<style>
+    #container {
+        overflow: hidden; width:100%; height:70%;
+        max-height: 400px;
+    }
+    .ring-opt-tabs{}
+    .ring-opt-tab{cursor:pointer; text-align:center;}
+    .ring-opt-tab:hover,.ring-opt-tab.active{color:#3db1f6;}
+    
+    .ring-opt-title{ cursor:pointer;}
+    .ring-opt-title h3{ color:#3db1f6;}
+    
+    .ring-opt-items{ overflow-y: auto; max-height:400px; padding-top: 10px;}
+    .ring-opt-item{ 
+        height: 50px;
+        width: 50px;
+        display:inline-block; text-align:center; border-radius:3px; margin-bottom:10px; cursor:pointer;}
+    .ring-opt-item.active{box-shadow: 0 0 0 4px #3db1f6;}
+    .ring-opt-item img{
+        max-width:100%; height:auto;
+    }
+    
+    .ring-print-item{ cursor:pointer;}
+    .ring-print-item.active{ outline:3px solid #699af5;}
+    .skin_color{
+        /*background-color: ;*/
+        color:#fca837;
+    }
+    .container-fluid{
+        padding: 0;
+    }
+    .panel{
+        margin:0;
+    }
+    .positionfb{
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        background-color: #fff;
+        max-height: 250px;
+        overflow: auto;
+
+    }
+    .positionfb .col-xs-12{
+        
+        padding: 0;
+    }
+    .row{
+        margin:0;
+    }
+    .panel-body{
+        background-color: #fff;
+    }
+    .selectItem{
+        display: none;
+    }
+</style>
+<div class="container-fluid">
+<!-- <p class="skin_color">嘎嘎嘎嘎嘎</p>
+ -->    
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="container"><canvas id="canvas" width="1407" height="311"></canvas></div>
+        </div>
+    </div>
+<!--     <div class="row position">
+        <div class="col-xs-8">
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading ring-opt-tabs">
+                    <div class="row">
+                        <div class="col-xs-12"><h3 class="panel-title ring-opt-tab active">灯罩款式</h3></div>
+                        <div class="col-xs-12"><h3 class="panel-title ring-opt-tab">灯座款式</h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="positionfb">
+    
+        <div class="row ">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading ring-opt-tabs">
+                        <div class="row">
+                            <div class="col-xs-6"><h3 class="panel-title ring-opt-tab active">灯罩款式</h3></div>
+                            <div class="col-xs-6"><h3 class="panel-title ring-opt-tab">灯座款式</h3></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 " > <!--selectItem-->
+                <div class="panel-body">
+                    <ul class="row list-unstyled ring-opt-items" style="display: block;">
+                        <li class="col-xs-6" style="text-align:center;"><a class="ring-opt-item header-style" data-file="" id="test">
+                            <img src="img/dengzuo.png"></a>
+                        </li>
+                        <li class="col-xs-6" style="text-align:center;">
+                          <!-- <a class="ring-opt-item header-style" data-id="149335" data-file="http://www.dayin.la/attachment/product/2016-09/01/d6a2bb391edc58f9f7805c62dd81bb55.stl"> -->
+                          <a class="ring-opt-item header-style" data-id="149335" data-file="mstl/dengzhaob.stl">
+                            <img class="media-object" src="img/dengzhao.png" alt="">
+                          </a>
+                        </li>
+                        <li class="col-xs-6" style="text-align:center;">
+                          <a class="ring-opt-item header-style" data-id="149336" data-file="mstl/m2.stl">
+                            <img class="media-object" src="img/m2.png" alt="">                                
+                          </a>
+                        </li>
+                        <li class="col-xs-6" style="text-align:center;">
+                            <a class="ring-opt-item header-style" data-id="149337" data-file="mstl/m3.stl">
+                                <img class="media-object" src="img/m3.png" alt="">                                
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="row list-unstyled ring-opt-items" style="display: none;">
+                        <li class="col-xs-6" style="text-align:center;">
+                            <a class="ring-opt-item bottom-style active" data-id="149333" data-file="mstl/dengzuob.stl">
+                                <img class="media-object" src="img/dengzuo.png" alt="">                                
+                            </a>
+                        </li>
+                        <li class="col-xs-6" style="text-align:center;">
+                            <a class="ring-opt-item bottom-style" data-id="149334" data-file="mstl/f4c887d3d733eba88e079fc8ecba61f0.stl">
+                                <img class="media-object" src="static/product_149334_176x132.jpg" alt="">                               
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    	
+<script>
+//进度条的样式
+function setProgress(value, info) {
+   $('#progress').css('display', 0 === value ? "none" : "block");
+   $('#progressBar').val(value);
+   $('#progressState').html(info);
+}
+//视口宽高
+function getViewPortSize(w) {
+    var w = w || window;
+    if (w.innerWidth != null){
+        return { w: w.innerWidth, h: w.innerHeight };
+    }
+    var d = w.document;
+    if (document.compatMode == "CSS1Compat"){
+        return { w: d.documentElement.clientWidth, h: d.documentElement.clientHeight };
+    }
+    return { w: d.body.clientWidth, h: d.body.clientHeight };
+}
+//canvas宽高等于其父元素宽高
+function Resize(){
+    var canvas = document.getElementById('canvas');
+    var $parent=$(canvas).parent();
+    var totalHeight=getViewPortSize().h;
+    $parent.height(totalHeight-$parent.offset().top);
+    canvas.width = $parent.width();
+    canvas.height = $parent.height();
+}
+
+$(function() {
+    window.onresize = Resize;
+    Resize();
+    var dylThree = new DlyThree();
+    dylThree.onAnimate = function() {
+        TWEEN.update();
+    }
+    dylThree.isShowGrid = false;
+    if (!dylThree.Start(document.getElementById('canvas'))) {
+        return;
+    }
+
+    var selectBottomDom;
+    var selectHeaderDom;
+    
+    $(document).on('click', '.header-style', function() {
+    	selectHeaderDom = $(this);
+        $('.selectItem').hide();
+        $('.header-style').removeClass('active');
+        selectHeaderDom.addClass("active");
+        var file = selectHeaderDom.data('file');
+        loadTopStl(file);
+    }).on('click', '.bottom-style', function() {
+    	selectBottomDom = $(this);
+        $('#test img').attr('src',selectBottomDom.find('img').attr('src'));
+        $('.selectItem').hide();
+        $('.bottom-style').removeClass('active');
+        selectBottomDom.addClass("active");
+        var file = selectBottomDom.data('file');
+        loadBottomStl(file);
+    }).on('click','#toggle-canvas-grid', function() {
+    	dylThree.toggleGrid();
+    })
+
+    var stlloader = new THREE.STLLoader();
+
+
+    var loadBottomStl = function(name) {
+    	if (!name) {
+            if (dylThree.bottomSTL) {
+            	dylThree.scene.remove(dylThree.bottomSTL);
+            }
+            return;
+        }
+    	stlloader.load(name, function (geometry, materials) {
+            // 金黄色 0xfca837
+            var material = new THREE.MeshPhongMaterial({color: 0xfca837, specular: 0xfca837, shading: THREE.SmoothShading, shininess: 30, fog: false, side: THREE.DoubleSide});
+            if ( geometry instanceof THREE.Geometry ) 
+            	geometry = new THREE.BufferGeometry().fromGeometry( geometry );
+
+            if (dylThree.bottomSTL) {
+            	dylThree.scene.remove(dylThree.bottomSTL);
+            }
+            dylThree.bottomSTL = new THREE.Mesh(geometry, material);
+            // dylThree.bottomSTL.castShadow = true;
+            // dylThree.bottomSTL.receiveShadow = true;
+            dylThree.bottomSTL.geometry.computeBoundingBox();
+            var positions = geometry.attributes.position.array;
+            var ttt=geometry.boundingBox.max.clone().add(geometry.boundingBox.min).multiplyScalar(0.5)
+        	for(var i=0;i<positions.length;i+=3){
+        		positions[i]-=ttt.x;
+        		positions[i+1]-=ttt.y;
+        		positions[i+2]-=ttt.z;
+        		//minZ = Math.min(positions[i+2],minZ);
+        	}
+            geometry.computeBoundingBox();
+            //geometry.computeVertexNormals();
+
+            //dylThree.bottomSTL.rotation.x = Math.PI;
+            dylThree.bottomSTL.position.x = 0;
+            dylThree.bottomSTL.position.y = 0;
+            dylThree.bottomSTL.position.z = -geometry.boundingBox.max.z;
+            dylThree.scene.add(dylThree.bottomSTL);
+            setProgress(0);
+        }, function (event) {
+            if (event.total) {
+            	var per = (100 * event.loaded / event.total).toFixed(0);
+            	setProgress(per, "正在加载模型数据…");
+            } else {
+                var message = (event.loaded / 1000).toFixed(2) + " KB";
+                setProgress(100, "正在加载模型数据（"+message+"）…");
+            }
+        });
+    }
+    var loadTopStl = function(name) {
+        if (!name) {
+        	if (dylThree.topSTL) {
+            	dylThree.scene.remove(dylThree.topSTL);
+            }
+            return;
+        }
+    	stlloader.load(name, function (geometry, materials) {
+            var material = new THREE.MeshPhongMaterial({color: 0xfca837, specular: 0xfca837, shading: THREE.SmoothShading, shininess: 30, fog: false, side: THREE.DoubleSide});
+            if ( geometry instanceof THREE.Geometry ) 
+            	geometry = new THREE.BufferGeometry().fromGeometry( geometry );
+            if (dylThree.topSTL) {
+            	dylThree.scene.remove(dylThree.topSTL);
+            }
+            dylThree.topSTL = new THREE.Mesh(geometry, material);
+            // dylThree.topSTL.castShadow = true;
+            // dylThree.topSTL.receiveShadow = true;
+            dylThree.topSTL.geometry.computeBoundingBox();
+            var positions = geometry.attributes.position.array;
+            var ttt=geometry.boundingBox.max.clone().add(geometry.boundingBox.min).multiplyScalar(0.5)
+        	for(var i=0;i<positions.length;i+=3){
+        		positions[i]-=ttt.x;
+        		positions[i+1]-=ttt.y;
+        		positions[i+2]-=ttt.z;
+        		//minZ = Math.min(positions[i+2],minZ);
+        	}
+            geometry.computeBoundingBox();
+            //geometry.computeVertexNormals();
+
+            //dylThree.topSTL.rotation.x = Math.PI;
+            dylThree.topSTL.position.x = 0;
+            dylThree.topSTL.position.y = 0;
+            dylThree.topSTL.position.z = geometry.boundingBox.max.z - 3.49;
+            dylThree.scene.add(dylThree.topSTL);
+            dylThree.topSTL.visible = false;
+            dylThree.topSTL.rotation.z = Math.PI/2;
+            dylThree.topSTL.rotation.x = -Math.PI/2;
+            var rotation = {z: Math.PI/2};
+            var tweenRotation = new TWEEN.Tween(rotation);
+            tweenRotation.to({z: 0}, 500);
+            //tweenRotation.easing(TWEEN.Easing.Elastic.InOut);
+            tweenRotation.onUpdate(function() {
+                    dylThree.topSTL.rotation.z = rotation.z;
+            });
+            var position = { x : 0, y: 0, z: 150, rx: -Math.PI/2 };
+            var target = { x : 0, y: 0, z: geometry.boundingBox.max.z - 3.49, rx: 0};
+            var tween = new TWEEN.Tween(position).to(target, 800);
+            tween.onStart(function(){
+            	dylThree.topSTL.visible = true;
+            });
+            tween.onUpdate(function(){
+            	dylThree.topSTL.position.x = position.x;
+            	dylThree.topSTL.position.y = position.y;
+            	dylThree.topSTL.position.z = position.z;
+            	dylThree.topSTL.rotation.x = position.rx;
+            	console.log('tween.onUpdate');
+            });
+            tween.easing(TWEEN.Easing.Cubic.InOut);
+            tween.chain(tweenRotation);
+            tween.start();
+
+            setProgress(0);
+        }, function (event) {
+            if (event.total) {
+            	var per = (100 * event.loaded / event.total).toFixed(2);
+            	console.log(per);
+            	setProgress(per, "正在加载模型数据…");
+            } else {
+                var message = (event.loaded / 1000).toFixed(2) + " KB";
+                setProgress(100, "正在加载模型数据（"+message+"）…");
+            }
+        });
+    }
+
+    $('.bottom-style:eq(0)').trigger('click');
+    $('.header-style:eq(1)').trigger('click');
+    
+    $(document).on('click','.ring-opt-tab',function(){
+        $('.selectItem').show();
+        $(this).addClass("active");
+        $('.ring-opt-tab').not(this).removeClass("active");
+        console.log($(this).parent().index());
+        $('.ring-opt-items').eq($(this).parent().index()).slideDown().siblings().slideUp();
+    });
+})
+</script>        
+<script type="text/javascript" src="static/modernizr.js"></script>
+<script type="text/javascript" src="static/dialog-plus.js"></script>
+<script type="text/javascript" src="static/jquery-ui-slide.js"></script>
+<script type="text/javascript" src="static/layer.js"></script>
+<script type="text/javascript" src="static/three.js"></script>
+<script type="text/javascript" src="static/STLLoader.js"></script>
+<script type="text/javascript" src="static/OrbitControls.js"></script>
+<script type="text/javascript" src="static/Tween.js"></script>
+<script type="text/javascript" src="static/dyl.js"></script>
+</body></html>
