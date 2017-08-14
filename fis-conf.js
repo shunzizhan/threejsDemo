@@ -1,5 +1,5 @@
 // 保持发布使用相对路径
-// fis.hook('relative');
+fis.hook('relative');
 
 //域
 // 测试环境
@@ -36,6 +36,13 @@ fis.set('version', '1.0.0');
 //   // 'map/**',
 //   // 'data_test/**'
 // ]);
+fis.set('project.files', [
+  // '*.css',
+  // '*.js',
+  // '*.{png,jpg,gif,stl,vtk}',
+  // '*.html',
+  // '*.htm',
+]);
 
 fis.match("*", {
         // domain: "${domain_pre}",
@@ -44,17 +51,17 @@ fis.match("*", {
     // .match('lib/**', {
     //   release:"js/$0"
     // })
-    // .match('/({**,!core})/(*.less)', {
-    //     parser: fis.plugin('less'),
-    //     rExt: '.css',
-    //     useSprite: true,
-    //     optimizer: fis.plugin('clean-css'),
-    //     preprocessor: fis.plugin('cssprefixer', {
-    //       "browsers": ["FireFox > 1", "Chrome > 1", "ie >= 8"],
-    //       "cascade": true
-    //     }),
-    //     release: '/css/$2'
-    // })
+    .match('*.less', {
+        parser: fis.plugin('less'),
+        rExt: '.css',
+        useSprite: true,
+        optimizer: fis.plugin('clean-css'),
+        preprocessor: fis.plugin('cssprefixer', {
+          "browsers": ["FireFox > 1", "Chrome > 1", "ie >= 8"],
+          "cascade": true
+        }),
+        // release: '/css/'
+    })
     // .match('core/**', {
     //   //发布到/images/sprite/xxx目录下
     //   release: false

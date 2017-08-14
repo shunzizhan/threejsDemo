@@ -102,15 +102,15 @@ DlyThree.prototype.InitThree = function(canvas) {
 	if (!this.renderer) {
 		return false;
 	}
-
-	this.renderer.setClearColor(new THREE.Color(0xffffff));
+	// 设置背景颜色  EAE3D2 F2F1EC A99c89
+	this.renderer.setClearColor(new THREE.Color(0xeeeeee));
 	this.renderer.setSize(this.canvas.width, this.canvas.height);
 	return true;
 };
 
 DlyThree.prototype.InitCamera = function () {
 	var scope = this;
-    this.camera = new THREE.PerspectiveCamera( 45, this.canvas.width / this.canvas.height, 0.1, 10000 );
+    this.camera = new THREE.PerspectiveCamera( 45, this.canvas.width / this.canvas.height, 1, 10000 );
     this.camera.position.set(0,-100,150);
     
     this.camera.up.x = 0;
@@ -123,19 +123,38 @@ DlyThree.prototype.InitCamera = function () {
 };
 
 DlyThree.prototype.InitLights = function () {
-    this.scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
-    this.ambientLight = new THREE.AmbientLight(0x202020);
-    this.camera.add(this.ambientLight);
-    this.directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
-    this.directionalLight.position.x = 1;
-    this.directionalLight.position.y = 1;
-    this.directionalLight.position.z = 2;
-    this.directionalLight.position.normalize();
-    this.camera.add(this.directionalLight);
-    this.pointLight = new THREE.PointLight(0xffffff, 0.3);
-    this.pointLight.position.x = 0;
-    this.pointLight.position.y = -25;
-    this.pointLight.position.z = 10;
+    // // this.scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
+    // // this.ambientLight = new THREE.AmbientLight(0x202020);
+    // // this.camera.add(this.ambientLight);
+    // this.scene.add( new THREE.HemisphereLight( 0x443333, 0x111222 ) );
+    // // // 环境光源
+    // this.ambientLight = new THREE.AmbientLight(0x202020);
+    // this.camera.add(this.ambientLight);
+
+    // // // 平行光源
+    // this.directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
+    // // this.directionalLight.position.x = 1;
+    // // this.directionalLight.position.y = 1;
+    // // this.directionalLight.position.z = 2;
+
+    // this.directionalLight.position.x = 1;
+    // this.directionalLight.position.y = 1;
+    // this.directionalLight.position.z = 1;
+
+    // this.directionalLight.position.normalize();
+    // this.camera.add(this.directionalLight);
+    // 点光源
+    this.pointLight = new THREE.PointLight(0xffffff);
+    // this.pointLight.position.x = 0;
+    // this.pointLight.position.y = -25;
+    // this.pointLight.position.z = 10;
+
+    // this.pointLight.position.x = 0;
+    // this.pointLight.position.y = 0;
+    // this.pointLight.position.z = -2;
+    this.pointLight.castShadow = true;
+    this.pointLight.position.set(0, 0,50);
+    // this.scene.add(this.pointLight);
     this.camera.add(this.pointLight);
     return true;
 };

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src="../build/three.js"></script>
+	</head>
+	<body>
+		<script>
+			// var scene = new THREE.Scene();
+			// var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+			// var renderer = new THREE.WebGLRenderer();
+			// renderer.setSize(window.innerWidth,window.innerHeight);
+
+			// document.body.appendChild(renderer.domElement);
+
+			// var geometry = new THREE.CubeGeometry(2,2,2);
+			// var material = new THREE.MeshBasicMaterial({color:0xffffff});
+			// var cube = new THREE.Mesh(geometry,material);
+			// scene.add(cube);
+			// camera.position.z = 5;
+			// function render(){
+			// 	requestAnimationFrame(render);
+			// 	cube.rotation.x += 0.1;
+			// 	cube.rotation.y += 0.1;
+			// 	renderer.render(scene,camera);
+			// }
+			// render();
+			
+			var container, camera, scene, renderer;
+			var SCREEN_WIDTH = window.innerWidth;
+			var SCREEN_HEIGHT = window.innerHeight;
+			function init(){
+				container = document.createElement( 'div' );
+				document.body.appendChild(container);
+
+				camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,1000);
+				camera.position.set(0,150,400);
+
+				scene = new THREE.Scene();
+				scene.fog = new THREE.Fog(0x050505,400,1000);
+
+				scene.add(new THREE.AmbientLight(0x222222));
+
+				var light = new THREE.SpotLight(0xffffff,5,1000);
+				light.position.set(200,250,500);
+				light.angle = 0.5;
+				light.penumbra = 0.5;
+
+				light.castShadow = true;
+				light.shadow.mapSize.width = 1024;
+				light.shadow.mapSize.height = 1024;
+				scene.add(light);
+
+				var light = new THREE.SpotLight(0xfffff,5,1000);
+				light.position.set(-100,350,350);
+				light.angle = 0.5;
+				light.penumbra = 0.5;
+				light.castShadow = true;
+				light.shadow.mapSize.width = 1024;
+				light.shadow.mapSize.height = 1024;
+				scene.add(light);
+
+				var gt = new THREE.TextureLoader().load('img/test.jpg');
+				var gg = new THREE.PlaneBufferGeometry(2000,2000);
+				var gm = new THREE.MeshPhongMaterial({color:0xffffff,map:gt});
+
+				var ground = new THREE.Mesh(gg,gm);
+				ground.rotation.x = -Math.PI/2;
+				ground.material.map.repeat.set(8,8);
+				ground.material.map.wraps = ground.material.map.wrapT = THREE.RepeatWrapping;
+				ground.receiveShadow = true;
+
+				scene.add(ground);
+
+				renderer = new THREE.WebGLRenderer({antialias:true});
+				renderer.setClearColor(scene.fog.color);
+				renderer.setPixelRatio(window.devicePixelRatio);
+				renderer.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+				container.appendChild(renderer.domElement);
+			}
+			init();
+		</script>
+	</body>
+</html>

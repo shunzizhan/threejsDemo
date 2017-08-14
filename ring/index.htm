@@ -127,7 +127,7 @@
                         </li>
                         <li class="col-xs-6" style="text-align:center;">
                           <!-- <a class="ring-opt-item header-style" data-id="149335" data-file="http://www.dayin.la/attachment/product/2016-09/01/d6a2bb391edc58f9f7805c62dd81bb55.stl"> -->
-                          <a class="ring-opt-item header-style" data-id="149335" data-file="mstl/dengzhaob.stl">
+                          <a class="ring-opt-item header-style" data-id="149335" data-file="mstl/dengzhao.stl">
                             <img class="media-object" src="img/dengzhao.png" alt="">
                           </a>
                         </li>
@@ -149,8 +149,8 @@
                             </a>
                         </li>
                         <li class="col-xs-6" style="text-align:center;">
-                            <a class="ring-opt-item bottom-style" data-id="149334" data-file="mstl/f4c887d3d733eba88e079fc8ecba61f0.stl">
-                                <img class="media-object" src="static/product_149334_176x132.jpg" alt="">                               
+                            <a class="ring-opt-item bottom-style" data-id="149334" data-file="mstl/dengzuo_modify.stl">
+                                <img class="media-object" src="img/dengzuo_modify.png" alt="">                               
                             </a>
                         </li>
                     </ul>
@@ -236,8 +236,8 @@ $(function() {
             return;
         }
     	stlloader.load(name, function (geometry, materials) {
-            // 金黄色 0xfca837
-            var material = new THREE.MeshPhongMaterial({color: 0xfca837, specular: 0xfca837, shading: THREE.SmoothShading, shininess: 30, fog: false, side: THREE.DoubleSide});
+            // 金黄色 0xfca837  color: 0xfca837, specular: 0xfca837,
+            var material = new THREE.MeshPhongMaterial({color: 0xFFF4B5, specular: 0xFFF4B5, shading: THREE.SmoothShading, shininess: 30, fog: true, side: THREE.DoubleSide});
             if ( geometry instanceof THREE.Geometry ) 
             	geometry = new THREE.BufferGeometry().fromGeometry( geometry );
 
@@ -283,7 +283,7 @@ $(function() {
             return;
         }
     	stlloader.load(name, function (geometry, materials) {
-            var material = new THREE.MeshPhongMaterial({color: 0xfca837, specular: 0xfca837, shading: THREE.SmoothShading, shininess: 30, fog: false, side: THREE.DoubleSide});
+            var material = new THREE.MeshPhongMaterial({color: 0xFFF4B5, specular: 0xFFF4B5, shading: THREE.SmoothShading, shininess: 30, fog: true, side: THREE.DoubleSide});
             if ( geometry instanceof THREE.Geometry ) 
             	geometry = new THREE.BufferGeometry().fromGeometry( geometry );
             if (dylThree.topSTL) {
