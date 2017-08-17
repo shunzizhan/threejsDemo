@@ -112,10 +112,10 @@ DlyThree.prototype.InitCamera = function () {
 	var scope = this;
     this.camera = new THREE.PerspectiveCamera( 45, this.canvas.width / this.canvas.height, 1, 10000 );
     this.camera.position.set(0,-100,150);
-    
+    // this.camera.rotation.set(1,0,0);
     this.camera.up.x = 0;
     this.camera.up.y = 0;
-    this.camera.up.z = 1;
+    this.camera.up.z = 5;
     
     this.scene.add(this.camera);
     
@@ -167,7 +167,7 @@ DlyThree.prototype.InitControls = function() {
     this.controls = new THREE.OrbitControls(this.camera,this.canvas);
     //this.controls.enableRotate = false;
     this.controls.addEventListener('change', function(event) {
-		//console.log(event);
+			// console.log(event+"change");
     	scope.render();
 	}, false);
     return true;
@@ -181,6 +181,7 @@ DlyThree.prototype.Resize = function() {
 
 DlyThree.prototype.render = function() {
     //this.controls.update();
+   	// console.log(this.camera.position);
     this.renderer.autoClear = false;
     this.renderer.clear();
     this.renderer.render(this.scene, this.camera);

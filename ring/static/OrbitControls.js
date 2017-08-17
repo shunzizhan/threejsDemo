@@ -276,7 +276,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 	var dollyDelta = new THREE.Vector2();
 
 	function getAutoRotationAngle() {
-
+		console.log('OrbitControls.js');
 		return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
 
 	}

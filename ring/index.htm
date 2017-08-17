@@ -107,7 +107,7 @@
         </div>
     </div> -->
     <div class="positionfb">
-    
+        <button id="saveImg">截取屏幕</button>
         <div class="row ">
             <div class="col-xs-12">
                 <div class="panel panel-default">
@@ -190,11 +190,12 @@ function Resize(){
     canvas.width = $parent.width();
     canvas.height = $parent.height();
 }
-
+// var dylThree;
 $(function() {
     window.onresize = Resize;
     Resize();
     var dylThree = new DlyThree();
+    // dylThree = new DlyThree();
     dylThree.onAnimate = function() {
         TWEEN.update();
     }
@@ -330,7 +331,7 @@ $(function() {
             	dylThree.topSTL.position.y = position.y;
             	dylThree.topSTL.position.z = position.z;
             	dylThree.topSTL.rotation.x = position.rx;
-            	console.log('tween.onUpdate');
+            	console.log('2222222tween.onUpdate');
             });
             tween.easing(TWEEN.Easing.Cubic.InOut);
             tween.chain(tweenRotation);
@@ -359,6 +360,57 @@ $(function() {
         console.log($(this).parent().index());
         $('.ring-opt-items').eq($(this).parent().index()).slideDown().siblings().slideUp();
     });
+
+    // function draw(){  
+    //     var canvas = document.getElementById("canvas");  
+    //     var ctx = canvas.getContext("2d");  
+    //     ctx.fillStyle = "rgba(125, 46, 138, 0.5)";  
+    //     ctx.fillRect(25,25,100,100);   
+    //     ctx.fillStyle = "rgba( 0, 146, 38, 0.5)";  
+    //     ctx.fillRect(58, 74, 125, 100);  
+    //     ctx.fillStyle = "rgba( 0, 0, 0, 1)"; // black color  
+    //     ctx.fillText("Gloomyfish - Demo", 50, 50);  
+    // } 
+    // draw();
+    console.log(dylThree); 
+    function drawImg(){
+        dylThree.camera.position.set(0,-100,150);
+        dylThree.camera.rotation.set(0.5880025870162139,0,0);
+        // dylThree.camera.rotation.set(0.5,0,0);
+        // dylThree.camera.up.set(0,0,1);
+        setTimeout(function(){
+            // dylThree.camera.rotation.set();
+            var mycanvas = document.getElementById("canvas");  
+            // mycanvas.restore();
+            var image    = mycanvas.toDataURL("image/png");  
+            // return image;
+            var w=window.open('about:blank','image from canvas');  
+            w.document.write("<img src='"+image+"' alt='from canvas'/>"); 
+        },100);
+        
+    }
+
+    $('#saveImg').click(function(){
+        drawImg();
+        // var imgUrl = drawImg();
+        // var fd = new FormData();
+        // fd.append('file', imgUrl);
+        // $.ajax({
+        //      url: 'http://gw.fdc.com.cn/homebaseapi/homebaseapi.restful.inter.housesourceimg.upload',
+        //      data: fd,
+        //      type: 'POST',
+        //      cache: false,
+        //      crossDomain: true,
+        //      processData: false,
+        //      contentType: false,
+        //      dataType: 'json',
+        //      success: function(data) {
+        //         console.log(data);
+        //      },
+        //      error: function() {
+        //      }
+        // });
+    })
 })
 </script>        
 <script type="text/javascript" src="static/modernizr.js"></script>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>test2</title>
+  <!-- <link rel="stylesheet" href="test2.less"> -->
+  <style>
+    html {
+      font-size: 100px;
+      margin: 0;
+      padding: 0;
+      font-family: '微软雅黑',Arial,Helvetica,'microsoft yahei',sans-serif;
+      background: #f2f2f2
+    }
+    * {
+        margin: 0;
+        padding: 0
+    }
+    body {
+        font-size: 12px;
+        color: #333
+    }
+    .main {
+        background-color: #999;
+    }
+    p {
+        line-height: 30px;
+        font-size: 16px
+    }
+    .title {
+        font-size: 24px;
+        line-height: 40px;
+        text-align: center;
+        background-color: #fff
+    }
+    @media screen and (orientation: portrait) {
+        .main {
+            -webkit-transform:rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+             width: 100vh;
+             height: 100vh;
+             overflow: hidden;
+        }
+        
+    }
+    @media screen and (orientation: landscape) {
+        .main {
+            -webkit-transform:rotate(0);
+            -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+            transform: rotate(0)
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+      <p class="title">test</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+       <p>2 2 2 2 2  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque fuga iusto fugiat architecto dicta, repudiandae facere corporis, blanditiis ducimus ratione adipisci praesentium doloremque nulla sit numquam non reprehenderit voluptate.
+      </p>
+      <p id="test"></p>
+  </div>
+  <script type="text/javascript" src="http://img3.fdc.com.cn/m/js/lib/zepto/zepto.min.js"></script>
+  <script>
+    // var width_doc = document.documentElement.clientWidth;
+    // var height_doc =  document.documentElement.clientHeight; //文档流的高度
+    // var _width = screen.width;
+    // var _height =  screen.height; //屏幕的高度
+    // var orientationFun = function(){
+    // //  var width_doc = document.documentElement.clientWidth;
+    //   // var height_doc =  document.documentElement.clientHeight; //文档流的高度
+    // //  var _width = screen.width;
+    //   // var _height =  screen.height; //屏幕的高度
+    //   if (window.orientation == 180 || window.orientation == 0) {
+    //   // if(_width<_height){
+    //     // alert('body宽高：('+width_doc+','+height_doc+')  print容器宽高：('+$('#print').width()+","+$('#print').height()+")");
+    //     // $('.main').css({'transform': 'rotate(90deg)'});
+    //     // $('.main').width(height_doc);
+    //     // $('.main').height(width_doc);
+    //     // // $('.main').offset({top:0});
+    //     $('#test').html('body宽高：('+width_doc+','+height_doc+')  print容器宽高：('+$('.main').width()+","+$('.main').height()+")")
+    //   // }else{
+    //   }
+    //   if (window.orientation == 90 || window.orientation == -90 ){
+    //     // $('.main').css({'transform': 'rotate(0)'});
+    //     // $('.main').width(_height);
+    //     // $('.main').height(_width);
+    //     // alert('body宽高：('+width_doc+','+height_doc+')  print容器宽高：('+$('#print').width()+","+$('#print').height()+")");
+    //     $('#test').html('body宽高：('+width_doc+','+height_doc+')  print容器宽高：('+$('.main').width()+","+$('.main').height()+")")
+    //   }
+    // }
+    // window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+    //   orientationFun();
+    // }, false);
+    // orientationFun();
+    </script>
+</body>
+</html>
